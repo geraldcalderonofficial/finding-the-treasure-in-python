@@ -23,21 +23,48 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 *******************************************************************************
 ''')
 print("Welcome to Treasure Island.")
-print("Your mission is to find the treasure.")
-choice1 = input('You\'re at a crossroad, where do you want to go? Type "left" or "right".\n> ').lower()
+print("Your mission is to find the treasure.") 
 
+# area 1
+print("You\'re at a cross road. Where do you want to go? Type \"left\" or \"right\".")
+# lowercase the choice, just in case
+choice1 = input("> ").lower()
 if choice1 == "left":
-    choice2 = input('You\'ve come to a lake. There is an island in the middle of the lake. Type "wait" to wait for the boar. Type "swim" to swim across.\n> ').lower()
-    if choice2 == "wait" or "Wait":
-        choice3 = input(
-            'You arrive at the island unharmed. There is a house with 3 doors. One red, one yellow and one blue. Which colour do you choose?\n> ').lower()
+
+    # area 2
+    print("You've come to a lake. There is an island in the middle of the lake. Type \"wait\" to wait for a boat. "
+          "Type \"swim\" to swim across.")
+    choice2 = input("> ").lower()
+    if choice2 == "wait":
+
+        # area 3
+        print("You arrive at the island unharmed. There is a house with 3 doors. "
+              "One \"red\", one \"yellow\" and one \"blue\". Which colour do you choose?")
+        choice3 = input("> ").lower()
         if choice3 == "red":
-            print("It's a room full of fire. Game over.")
-        elif choice3 == "yellow":
-            print("You found the treasure. You win!")
+            print("It's a room full of fire.")
+            game_over = True
         elif choice3 == "blue":
-            print("You enter a room of beast. Game over.")
+            print("You enter a room of beasts.")
+            game_over = True
+        elif choice3 == "yellow":
+            print("You found the treasure!")
+            victory = True
+        else:
+            print("You chose a door that doesn't exist.")
+            game_over = True
+
     else:
-        print("You got attacked by an angry trout. Game over.")
+        print("You get attacked by an angry trout.")
+        game_over = True
+
 else:
-    print("You fell into a hole. Game over.")
+    print("You fell into a hole.")
+    game_over = True
+
+# print the final outcome
+if game_over:
+    print("Game over.")
+elif victory:
+    print("You win!")
+
